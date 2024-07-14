@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SettingsPage"
+             Title="Ayarlar"
+             
+             BackgroundColor="LightGray">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <Label Text="Namaz Vakitleri Ayarları" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" />
+
+                <!-- Ülke Seçimi -->
+                <Label Text="Ülke Seçin" 
+                       FontSize="18" 
+                       FontAttributes="Bold" />
+                <Picker x:Name="countryPicker"
+                        Title="Ülke Seçin"
+                        SelectedIndexChanged="OnCountrySelected">
+                    <!-- Ülke Listesi -->
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Türkiye</x:String>
+                            <x:String>Amerika</x:String>
+                            <x:String>Almanya</x:String>
+                            <!-- Diğer ülkeler -->
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!-- İl Seçimi -->
+                <Label Text="İl Seçin" 
+                       FontSize="18" 
+                       FontAttributes="Bold" />
+                <Picker x:Name="cityPicker"
+                        Title="İl Seçin"
+                        IsEnabled="False"
+                        SelectedIndexChanged="OnCitySelected">
+                    <!-- İl Listesi, Dinamik olarak doldurulacak -->
+                </Picker>
+
+                <!-- İlçe Seçimi -->
+                <Label Text="İlçe Seçin" 
+                       FontSize="18" 
+                       FontAttributes="Bold" />
+                <Picker x:Name="districtPicker"
+                        Title="İlçe Seçin"
+                        IsEnabled="False">
+                    <!-- İlçe Listesi, Dinamik olarak doldurulacak -->
+                </Picker>
+
+                <Button Text="Kaydet" 
+                        FontSize="18" 
+                        FontAttributes="Bold" 
+                        BackgroundColor="DarkCyan"
+                        TextColor="White"
+                        Clicked="OnSaveClicked" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

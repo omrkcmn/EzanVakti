@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.PrayTimesPage"
+             BackgroundColor="DarkCyan"
+             Padding="0"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            ios:Page.UseSafeArea="False" 
+            Shell.NavBarIsVisible="True"
+            Shell.TitleColor="Black"
+            Shell.BackgroundColor="Black"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons">
+                    
+<ContentPage.Behaviors> 
+        <toolkit:StatusBarBehavior StatusBarColor="DarkCyan" > 
+        </toolkit:StatusBarBehavior>
+ </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <Grid IgnoreSafeArea="True">
+            <!-- Grid Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- En üstteki Grid -->
+            <Grid Grid.Row="0" ColumnDefinitions="*, Auto">
+                <!-- Ayarlar İkonu -->
+                
+                <mi:MauiIcon Icon="{mi:Material Settings}"
+                             IconColor="White"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             Margin="0,10,10,0">
+                    <mi:MauiIcon.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSettingsTapped"/>
+                    </mi:MauiIcon.GestureRecognizers>
+                </mi:MauiIcon>
+            </Grid>
+
+            <!-- Orta kısım -->
+            <VerticalStackLayout Spacing="43" 
+                                 HorizontalOptions="CenterAndExpand" 
+                                 VerticalOptions="CenterAndExpand"
+                                 Grid.Row="1">
+                <Label Text="Yatsıya" TextColor="Wheat" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" />
+                <Label Text="1sa 43dak" TextColor="White" 
+                       FontSize="48" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center" />
+
+                <!-- Namaz Vakitleri Listesi -->
+                <CollectionView VerticalOptions="FillAndExpand" WidthRequest="300"
+                                x:Name="lstTimes">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Spacing="20" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" FontSize="24" HorizontalOptions="StartAndExpand" TextColor="White" />
+                                <Label Text="{Binding Time}" FontSize="24" HorizontalOptions="EndAndExpand" TextColor="White" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
